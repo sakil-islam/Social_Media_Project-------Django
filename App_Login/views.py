@@ -42,10 +42,23 @@ def edit_profile(request):
         if form.is_valid():
             form.save(commit=True)
             form = EditProfile(instance=current_user)
-    #         return HttpResponseRedirect(reverse('App_Login:profile'))
+            return HttpResponseRedirect(reverse('App_Login:profile'))
     return render(request, 'App_Login/profile.html', context={'form':form, 'title':'Edit Profile . Social'})
 
 @login_required
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('App_Login:login'))
+
+@login_required
+def profile(request):
+    # form = PostForm()
+    # if request.method == 'POST':
+    #     form = PostForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         post = form.save(commit=False)
+    #         post.author = request.user
+    #         post.save()
+    #         return HttpResponseRedirect(reverse('home'))
+    # , 'form': form
+    return render(request, 'App_Login/user.html', context={'title':'User'})
