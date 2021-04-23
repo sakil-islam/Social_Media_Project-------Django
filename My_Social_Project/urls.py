@@ -7,9 +7,9 @@ from App_Posts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('App_Login.urls')),
-    path('post/', include('App_Posts.urls')),
-    path('', views.home, name='home'),
-    
+    path('', include('App_Posts.urls')),
+    # path('', views.home, name='home'),
+
 ]
 
 
